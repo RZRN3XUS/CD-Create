@@ -10,7 +10,7 @@ public class Client {
         try {
             Socket me = new Socket("10.151.161.240", 50);
             System.out.println("Connected to server at " + me.getRemoteSocketAddress());
-            System.out.println("Welcome to IMIP Client Version 1.0\n");
+            System.out.println("Welcome to the IMIP Client Version 1.0\n");
             System.out.println("To logoff, type 'logoff' in your command prompt.");
             System.out.print("Please enter a username: ");
             String username = sc.nextLine();

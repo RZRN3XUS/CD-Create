@@ -7,6 +7,7 @@ import java.util.Timer;
 
 public class Server {
     public static void main(String args[]) throws IOException {
+        System.out.println("Server is running IMIP Version 1.0");
         System.out.println("Server started and is hosted at: " + InetAddress.getLocalHost());
         ServerSocket Server = new ServerSocket(50, 10, InetAddress.getLocalHost());
         while (true)
