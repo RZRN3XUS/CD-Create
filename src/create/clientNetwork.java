@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 public class clientNetwork {
+    //Version 1.0
     public static ArrayList<Socket> clients = new ArrayList<Socket>(0);
     public static void addClient(Socket client) {
         clients.add(client);
