@@ -7,7 +7,7 @@ import java.util.Timer;
 
 public class Server {
     public static void main(String args[]) throws IOException {
-        System.out.println("Server is running IMIP Version 1.0");
+        System.out.println("Server is running IMIP Version 1.1");
         System.out.println("Server started and is hosted at: " + InetAddress.getLocalHost());
         ServerSocket Server = new ServerSocket(50, 10, InetAddress.getLocalHost());
         while (true)
@@ -48,16 +48,21 @@ class ClientHandler extends Thread
     @Override
     public void run()
     {
-        while (true) {
-            String in;
+        boolean run = true;
+        while (run = true) {
+            String in = "*(!!)&&null&&(!!)*";
             try {
                 in = this.sockin.readUTF();
             } catch (IOException e) {
                 e.printStackTrace();
-                in = null;
+                try {
+                    Thread.sleep(1);
+                } catch (InterruptedException e1){
+                    run = false;
+                }
             }
-            if (in != null) {
-                if (in == "logoff") {
+            if (!(in.equals("*(!!)&&null&&(!!)*"))) {
+                if (in.equals("logoff") || csock.isClosed()) {
                     try {
                         clientNetwork.update(clientNetwork.getIndex(this.csock));
                         this.csock.close();
@@ -69,10 +74,15 @@ class ClientHandler extends Thread
                 }
                 try {
                     clientNetwork.broadcast(in, clientNetwork.getIndex(this.csock));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                } catch (IOException e) {}
             }
+        }
+        try {
+            this.csock.close();
+            this.sockin.close();
+            this.sockout.close();
+        } catch (Exception e2) {
+            e2.printStackTrace();
         }
     }
 }
