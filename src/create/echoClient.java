@@ -8,9 +8,9 @@ public class echoClient {
         //echoClient Version 1.0
         while (true) {
             try {
-                System.out.println(in.readUTF());
+                System.out.println(in.readUTF()); //Reads incoming messages
             } catch (Exception e) {
-                System.exit(0);
+                e.printStackTrace();
             }
         }
     }
