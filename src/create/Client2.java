@@ -11,7 +11,7 @@ class Client2 {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
-        Socket me = new Socket("192.168.2.229", 50);
+        Socket me = new Socket("52.91.76.77", 50);
         System.out.println("Connected to server at " + me.getRemoteSocketAddress());
         System.out.println("Welcome to the IMIP Client Version 1.2\n");
         System.out.println("To logoff, type 'logoff' in your command prompt.");
