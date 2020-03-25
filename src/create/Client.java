@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Client {
     //As of v1.1 Client has been converted to clientMain
-    //Client v1.2
+    //Client v1.2.1
     public static void send(DataOutputStream out, String username) throws IOException {
         while (true) {
             Scanner sc = new Scanner(System.in);
@@ -13,7 +13,8 @@ public class Client {
             input += sc.nextLine();
             if (!(input.equals(null)))
                 out.writeUTF("[" + username + "]: " + input);
-            if (input.equals("logoff")) {
+            else if (input.equals("logoff")) {
+                out.writeUTF("[" + username + "] left the server.");
                 System.exit(0);
             }
         }
