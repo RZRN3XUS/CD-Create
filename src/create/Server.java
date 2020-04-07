@@ -6,10 +6,10 @@ import java.time.*;
 import java.util.Timer;
 
 public class Server {
-    public static void main(String args[]) throws IOException {
-        System.out.println("Server is running IMIP Version 1.2");
+    public static void Server(int port) throws IOException {
+        System.out.println("Server is running IMIP Version 1.3");
         System.out.println("Server started and is hosted at: " + InetAddress.getLocalHost());
-        ServerSocket Server = new ServerSocket(50, 10, InetAddress.getLocalHost()); //Starting up Server
+        ServerSocket Server = new ServerSocket(port, 30, InetAddress.getLocalHost()); //Starting up Server
         while (true)
         {
             Socket connection = null;

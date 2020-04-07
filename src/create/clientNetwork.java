@@ -4,8 +4,9 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 public class clientNetwork {
-    //Version 1.0
+    //Version 1.1
     public static ArrayList<Socket> clients = new ArrayList<Socket>(0); //New array for all client sockets
+    public static int port = 1;
     public static void addClient(Socket client) { //Adds clients to array
         clients.add(client);
     }
@@ -25,5 +26,12 @@ public class clientNetwork {
     }
     public static void update(int leavingIndex) { //Removes client from array
         clients.remove(leavingIndex);
+    }
+    public static int findNewRoom() {
+        port = port++;
+        return port;
+    }
+    public static int getRoom() {
+        return port;
     }
 }

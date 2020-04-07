@@ -10,6 +10,6 @@ public class kickstartClient {
     Not sure why it needs this but I have observed that the Clients only respond correctly with one "dummy client"
      */
     public static void main(String[] args) throws IOException {
-        Socket kick = new Socket("192.168.2.229", 50); //connecting to Server to kickstart ClientHandler
+        Socket kick = new Socket("52.91.76.77", 50); //connecting to Server to kickstart ClientHandler
     }
 }
