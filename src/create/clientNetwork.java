@@ -27,11 +27,4 @@ public class clientNetwork {
     public static void update(int leavingIndex) { //Removes client from array
         clients.remove(leavingIndex);
     }
-    public static int findNewRoom() {
-        port = port++;
-        return port;
-    }
-    public static int getRoom() {
-        return port;
-    }
 }
