@@ -14,7 +14,16 @@ class clientMain {
         Scanner sc = new Scanner(System.in);
         Socket me;
         try {
-            me = new Socket("192.168.2.229", 50); //Connecting to Server IP
+            System.out.println("Please enter the Server ip: ");
+            Scanner ip = new Scanner(System.in);
+            String addr = ip.next();
+            try {
+                me = new Socket(addr, 50); //Connecting to Server IP
+            } catch (ConnectException e) {
+                System.err.println("Couldn't connect to server at " + addr);
+                me = null;
+            }
+
             System.out.println("Connected to server at " + me.getRemoteSocketAddress());
             //Greeting and version
             System.out.println("Welcome to the IMIP Client Version 1.2\n");

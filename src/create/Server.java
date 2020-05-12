@@ -46,37 +46,31 @@ class ClientHandler extends Thread
     @Override
     public void run()
     {
-        boolean detector = true; //Detector for errors to stop program
-        while (detector) {
-            String in = "*(!!)&&null&&(!!)*"; //special null code for debugging
+        while (true) {
+            String in = null;
             try {
                 in = this.sockin.readUTF();
             } catch (IOException e) {
-                detector = false;
-
+                break;
             }
             if (!(in.equals("*(!!)&&null&&(!!)*"))) {
-                if (in.equals("logoff") || csock.isClosed()) {
+                if (in.contains("logoff")) {
                     try {
-                        clientNetwork.update(clientNetwork.getIndex(this.csock)); //adding this client to array
+                        clientNetwork.update(clientNetwork.getIndex(this.csock)); //removing this client from array
                         this.csock.close();
                         this.sockin.close();
                         this.sockout.close();
+                        break;
                     } catch (IOException e) {
-                        detector = false;
+                        break;
                     }
                 }
-                try {
-                    clientNetwork.broadcast(in, clientNetwork.getIndex(this.csock)); //sends message to from this to all clients
-                } catch (IOException e) {}
+                else {
+                    try {
+                        clientNetwork.broadcast(in, clientNetwork.getIndex(this.csock)); //sends message to from this to all clients
+                    } catch (IOException e) {}
+                }
             }
-        }
-        try {
-            this.csock.close();
-            this.sockin.close();
-            this.sockout.close(); //closing all streams for program exit
-        } catch (Exception e2) {
-            e2.printStackTrace();
         }
     }
 }
